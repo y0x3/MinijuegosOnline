@@ -182,29 +182,33 @@
 
         .settings {
           background: rgba(0,0,0,0.2);
-          padding: 2vh 2vw;
+          padding: 1.5vh 2vw; /* ⭐ REDUCIDO: de 2vh a 1.5vh */
           border-radius: 20px;
           flex: 1;
-          min-height: 0;
+          height: 0;
           display: flex;
           flex-direction: column;
+          box-sizing: border-box;
+          overflow: hidden;
         }
 
         .settings h3 {
           color: #fff;
-          margin-bottom: 1.5vh;
-          font-size: min(1.2rem, 2.5vh);
+          margin-bottom: 1vh; /* ⭐ REDUCIDO: de 1.5vh a 1vh */
+          font-size: min(1.1rem, 2.2vh); /* ⭐ REDUCIDO: de 1.2rem/2.5vh */
           flex-shrink: 0;
         }
 
         .settings-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 1.5vw;
+          gap: .5vw; /* ⭐ REDUCIDO: de 1.5vw a 1vw */
           flex: 1;
           align-content: start;
+          box-sizing: border-box;
         }
 
+        /* El género ocupa toda la fila superior */
         .settings-grid .setting:first-child:nth-last-child(3) {
           grid-column: 1 / -1;
         }
@@ -212,27 +216,31 @@
         .setting {
           display: flex;
           flex-direction: column;
+          gap: 0.4vh; /* ⭐ NUEVO: espacio entre label y select */
         }
 
         .setting label {
           display: block;
           color: rgba(255,255,255,0.8);
-          margin-bottom: 0.5vh;
-          font-size: min(14px, 1.8vh);
+          margin-bottom: 0; /* ⭐ CAMBIADO: de 0.5vh a 0 (usamos gap ahora) */
+          font-size: min(13px, 1.6vh); /* ⭐ REDUCIDO: de 14px/1.8vh */
+          flex-shrink: 0;
         }
 
         .setting select {
           width: 100%;
-          padding: 1.2vh 0.5vw;
+          padding: 0.8vh 0.5vw; /* ⭐ REDUCIDO: de 1.2vh a 0.8vh */
           background: rgba(255,255,255,0.1);
           border: 2px solid rgba(255,255,255,0.2);
-          border-radius: 10px;
+          border-radius: 8px; /* ⭐ REDUCIDO: de 10px a 8px */
           color: #fff;
           cursor: pointer;
-          font-size: min(14px, 1.8vh);
+          font-size: min(13px, 1.6vh); /* ⭐ REDUCIDO: de 14px/1.8vh */
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          box-sizing: border-box;
+          flex-shrink: 0;
         }
 
         .setting select:focus {
@@ -242,17 +250,27 @@
 
         .setting select option {
           background: #1a1a2e;
-          padding: 1vh;
+          padding: 0.8vh;
         }
         
         /* Responsive: en pantallas muy pequeñas, todo en una columna */
         @media (max-width: 400px) {
           .settings-grid {
             grid-template-columns: 1fr;
+            gap: 0.8vh;
           }
           
           .settings-grid .setting:first-child:nth-last-child(3) {
             grid-column: 1;
+          }
+
+          .setting select {
+            font-size: min(12px, 1.5vh);
+            padding: 0.7vh 0.5vw;
+          }
+
+          .setting label {
+            font-size: min(12px, 1.5vh);
           }
         }
 
